@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  // content: {type: String, required: true},
+  // timestamp: {type: Date, required: true, default: new Date()},
+  // upvotes: {type: Number},
+  // downvotes: {type: Number},
+  // upvotes_uuids: [{type: String}],
+  // downvotes_uuids: [{type: String}],
+  // comments: [{type: String}],
+  // comment: {type: Boolean},
+  id String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  content String
+  timestamp DateTime
+  upvotes Int
+  downvotes Int
+  upvotes_uuids String[]
+  downvotes_uuids String[]
+  comments String[]
+}
